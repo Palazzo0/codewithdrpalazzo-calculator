@@ -21,19 +21,19 @@ This project was created as part of my #100DaysOfCode challenge to practice Pyth
 
 ## 📂 How to Run
 1. Clone this repository:
-   `bash
-   git clone https://github.com/your-username/calculator-project.git
+   `terminal
+   git clone https://github.com/Palazzo0/codewithdrpalazzo-calculator.git
 ## 📂 How to Run
-1. Clone this repository:
-   `bash
-   git clone https://github.com/your-username/calculator-project.git
+2. Clone this repository:
+    `terminal
+   git clone https://github.com/Palazzo0/codewithdrpalazzo-calculator.git
 
-2. Navigate into the project folder:
+3. Navigate into the project folder:
 
 cd calculator-project
 
 
-3. Run the Python file:
+4. Run the Python file:
 
 python calculator.py
 
