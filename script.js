@@ -93,7 +93,7 @@ keys.addEventListener("click", (e) => {
   console.log('button clicked:', e.target);
   const tgt = e.target.closest("button");
   if (!tgt) return;
-console.log( "appending number:", n, "current before:", current);
+// console.log( "appending number:", n, "current before:", current);
 
   if (tgt.dataset.num !== undefined) {
     appendNumber( tgt.dataset.num);
