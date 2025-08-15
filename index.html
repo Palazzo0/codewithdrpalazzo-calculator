@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculator</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Palazzo Calculator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="calculator">
-        <div class="display" id="display">0</div>
-        <div class="buttons">
-            <button class="operator" data-value="+">+</button>
-            <button class="operator" data-value="-">−</button>
-            <button class="operator" data-value="*">×</button>
-            <button class="operator" data-value="/">÷</button>
+  <div class="wrap fade-in">
+    <header class="header">
+      <!-- Replace src with your image file (keep it in the same folder or update the path) -->
+      <img src="your-image.png" alt="Dr. Palazzo" class="avatar" />
+      <div class="title">
+        <h1>Dr. Palazzo’s Calculator</h1>
+        <p class="subtitle">#codewithdrpalazzo</p>
+      </div>
 
-            <button class="number" data-value="7">7</button>
-            <button class="number" data-value="8">8</button>
-            <button class="number" data-value="9">9</button>
-            <button class="clear">C</button>
+      <!-- Dark mode toggle -->
+      <button class="mode-toggle" id="modeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        🌙
+      </button>
+    </header>
 
-            <button class="number" data-value="4">4</button>
-            <button class="number" data-value="5">5</button>
-            <button class="number" data-value="6">6</button>
-            <button class="equals">=</button>
+    <main class="calculator">
+      <input id="display" class="display" type="text" value="0" readonly aria-label="Calculator display"/>
 
-            <button class="number" data-value="1">1</button>
-            <button class="number" data-value="2">2</button>
-            <button class="number" data-value="3">3</button>
-            <button class="number" data-value="0">0</button>
-            <button class="number" data-value=".">.</button>
-        </div>
-    </div>
+      <div class="keys">
+        <!-- Row 1 -->
+        <button data-action="clear" class="key action">C</button>
+        <button data-action="backspace" class="key action">⌫</button>
+        <button data-op="%" class="key op">%</button>
+        <button data-op="/" class="key op">÷</button>
 
-    <script src="script.js" defer></script>
+        <!-- Row 2 -->
+        <button data-num="7" class="key num">7</button>
+        <button data-num="8" class="key num">8</button>
+        <button data-num="9" class="key num">9</button>
+        <button data-op="*" class="key op">×</button>
+
+        <!-- Row 3 -->
+        <button data-num="4" class="key num">4</button>
+        <button data-num="5" class="key num">5</button>
+        <button data-num="6" class="key num">6</button>
+        <button data-op="-" class="key op">−</button>
+
+        <!-- Row 4 -->
+        <button data-num="1" class="key num">1</button>
+        <button data-num="2" class="key num">2</button>
+        <button data-num="3" class="key num">3</button>
+        <button data-op="+" class="key op">+</button>
+
+        <!-- Row 5 -->
+        <button data-num="0" class="key num span2">0</button>
+        <button data-num="." class="key num">.</button>
+        <button data-action="equals" id="equals" class="key equals">=</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,92 +1,170 @@
+/* ===== Brand palette as CSS variables ===== */
 :root {
-    --bg-light: #f5f5f5;
-    --bg-dark: #1c1c1c;
-    --text-light: #000000;
-    --text-dark: #ffffff;
-    --operator-bg: #ff9800;
-    --operator-text-light: #000000;
-    --operator-text-dark: #ffffff;
-    --btn-bg: #3e3e3e;
-    --btn-bg-light: #e0e0e0;
+  --brown: #8B5E3C;       /* brand deep brown */
+  --brown-600: #6f472f;   /* darker brown (hover/elevations) */
+  --nude: #E6D3C2;        /* nude base */
+  --nude-50: #f7efe9;     /* lightest nude (panels) */
+  --purple: #A18CD1;      /* accent */
+  --pink: #F9C5D1;        /* accent */
+  --text: #3a2a22;        /* text on light */
+  --muted: #7a6458;       /* secondary text on light */
+
+  --bg: linear-gradient(135deg, var(--nude), var(--pink));
+  --panel: #ffffff;
+  --btn-num: var(--nude-50);
+  --btn-op: var(--purple);
+  --btn-action: var(--pink);
+  --btn-equals: var(--brown);
+  --btn-text-on-dark: #fff;
+
+  --shadow: 0 10px 25px rgba(0,0,0,0.15);
+  --shadow-soft: 0 6px 16px rgba(0,0,0,0.12);
 }
+
+/* ===== Dark theme overrides ===== */
+body.dark {
+  --bg: radial-gradient(1200px 800px at 20% -20%, #3d2a23, #2b1f1a 60%);
+  --panel: #3a2922;
+  --text: #F5E3D7;
+  --muted: #d6c6be;
+  --btn-num: #5a4133;
+  --btn-op: #7e6aa3;
+  --btn-action: #9a5f6d;
+  --btn-equals: #d7b8a5;
+  --btn-text-on-dark: #1f1410;
+  --shadow: 0 10px 25px rgba(0,0,0,0.45);
+  --shadow-soft: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* ===== Base layout ===== */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background: var(--bg);
+  color: var(--text);
+  transition: background 300ms ease, color 300ms ease;
 }
 
+.wrap {
+  width: 100%;
+  max-width: 420px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+/* ===== Soft entrance animation ===== */
+.fade-in {
+  animation: floatIn 600ms ease-out both;
+}
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== Header ===== */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow-soft);
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.title h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: .2px;
+}
+
+.subtitle {
+  margin: 2px 0 0;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+/* Dark mode toggle */
+.mode-toggle {
+  margin-left: auto;
+  border: none;
+  background: var(--btn-num);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 150ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+.mode-toggle:hover { transform: translateY(-1px); }
+.mode-toggle:active { transform: translateY(0); }
+
+/* ===== Calculator Card ===== */
 .calculator {
-    background-color: #2e2e2e;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.3);
-    max-width: 260px;
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: var(--shadow);
 }
 
+/* Display */
 .display {
-    background-color: #000;
-    color: var(--text-dark);
-    font-size: 2rem;
-    text-align: right;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    overflow-x: auto;
+  width: 100%;
+  height: 64px;
+  border: 2px solid rgba(0,0,0,0.06);
+  border-radius: 14px;
+  background: var(--btn-num);
+  color: var(--text);
+  font-size: 1.8rem;
+  text-align: right;
+  padding: 10px 12px;
+  outline: none;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.06);
 }
 
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+/* Keys grid */
+.keys {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
-button {
-    padding: 15px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+/* Base button */
+.key {
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 160ms ease, filter 200ms ease, background 200ms ease;
+  will-change: transform;
+  box-shadow: var(--shadow-soft);
 }
 
-.number {
-    background-color: var(--btn-bg);
-    color: var(--text-dark);
-}
+/* Button styles */
+.num { background: var(--btn-num); color: var(--text); }
+.op { background: var(--btn-op); color: #fff; }
+.action { background: var(--btn-action); color: var(--text); font-weight: 600; }
+.equals { background: var(--btn-equals); color: #fff; }
 
-.number:hover {
-    background-color: #5a5a5a;
-}
+.span2 { grid-column: span 2; }
 
-.operator {
-    background-color: var(--operator-bg);
-    color: var(--operator-text-dark);
-}
+/* Soft hover/press animations */
+.key:hover { transform: translateY(-2px); }
+.key:active { transform: translateY(0); filter: brightness(0.98); }
 
-.operator:hover {
-    background-color: #ffb74d;
-}
-
-.clear {
-    background-color: #f44336;
-    color: white;
-}
-
-.clear:hover {
-    background-color: #e57373;
-}
-
-.equals {
-    background-color: #4caf50;
-    color: white;
-}
-
-.equals:hover {
-    background-color: #81c784;
+/* Focus ring for accessibility */
+.key:focus-visible, .mode-toggle:focus-visible {
+  outline: 3px solid rgba(161, 140, 209, 0.55); /* purple glow */
+  outline-offset: 2px;
 }
