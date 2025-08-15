@@ -30,7 +30,7 @@ This project was created as part of my #100DaysOfCode challenge to practice Pyth
 
 3. Navigate into the project folder:
 
-cd calculator-project
+cd mini calculator
 
 
 4. Run the Python file:
